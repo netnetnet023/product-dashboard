@@ -25,7 +25,7 @@ function App() {
     await fetch(`${API}/products`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, price: Number(price) }),
+      body: JSON.stringify({ name, price: Number(price) })
     });
 
     setName("");
@@ -45,132 +45,135 @@ function App() {
         minHeight: "100vh",
         background: "#1a1a1a",
         color: "white",
-        padding: "40px",
-        fontFamily: "Inter, sans-serif",
         display: "flex",
-        flexDirection: "column",
-        alignItems: "center"
+        justifyContent: "center",
+        paddingTop: "40px",
+        fontFamily: "Inter, sans-serif"
       }}
     >
-      {/* Centered heading */}
-      <h1 style={{ fontSize: "42px", marginBottom: "40px", textAlign: "center" }}>
-        Products Dashboard
-      </h1>
+      <div style={{ width: "100%", maxWidth: "700px" }}>
+        <h1 style={{ fontSize: "42px", marginBottom: "40px", textAlign: "center" }}>
+          Products Dashboard
+        </h1>
 
-      {/* Card for adding product */}
-      <div
-        style={{
-          background: "#262626",
-          padding: "25px",
-          width: "100%",
-          maxWidth: "500px",
-          borderRadius: "10px",
-          marginBottom: "40px",
-          boxShadow: "0 0 10px rgba(0,0,0,0.3)"
-        }}
-      >
-        <h2 style={{ marginBottom: "20px", fontSize: "22px" }}>Add Product</h2>
-
-        <form onSubmit={createProduct}
-          style={{ display: "flex", gap: "10px" }}
+        {/* Add product card */}
+        <div
+          style={{
+            background: "#262626",
+            padding: "25px",
+            width: "100%",
+            maxWidth: "500px",
+            borderRadius: "10px",
+            marginBottom: "40px",
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)"
+          }}
         >
-          <input
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            style={{
-              padding: "10px",
-              flex: 1,
-              borderRadius: "6px",
-              border: "none",
-              outline: "none",
-              background: "#333",
-              color: "white"
-            }}
-          />
-          <input
-            placeholder="Price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            style={{
-              padding: "10px",
-              width: "120px",
-              borderRadius: "6px",
-              border: "none",
-              outline: "none",
-              background: "#333",
-              color: "white"
-            }}
-          />
-          <button
-            style={{
-              padding: "10px 18px",
-              background: "#4CAF50",
-              border: "none",
-              color: "white",
-              cursor: "pointer",
-              borderRadius: "6px",
-              fontWeight: "bold"
-            }}
+          <h2 style={{ marginBottom: "20px", fontSize: "22px" }}>Add Product</h2>
+
+          <form
+            onSubmit={createProduct}
+            style={{ display: "flex", gap: "10px" }}
           >
-            Add
-          </button>
-        </form>
-      </div>
-
-      {/* Product list */}
-      <div
-        style={{
-          background: "#262626",
-          padding: "25px",
-          width: "100%",
-          maxWidth: "500px",
-          borderRadius: "10px",
-          boxShadow: "0 0 10px rgba(0,0,0,0.3)"
-        }}
-      >
-        <h2 style={{ marginBottom: "20px", fontSize: "22px" }}>Products</h2>
-
-        {products.length === 0 && (
-          <p style={{ opacity: 0.7 }}>No products found.</p>
-        )}
-
-        <ul style={{ paddingLeft: "0" }}>
-          {products.map((p) => (
-            <li
-              key={p.id}
+            <input
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               style={{
-                listStyle: "none",
-                background: "#333",
-                padding: "12px",
-                marginBottom: "10px",
+                padding: "10px",
+                flex: 1,
                 borderRadius: "6px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center"
+                border: "none",
+                outline: "none",
+                background: "#333",
+                color: "white"
+              }}
+            />
+
+            <input
+              placeholder="Price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              style={{
+                padding: "10px",
+                width: "120px",
+                borderRadius: "6px",
+                border: "none",
+                outline: "none",
+                background: "#333",
+                color: "white"
+              }}
+            />
+
+            <button
+              style={{
+                padding: "10px 18px",
+                background: "#4CAF50",
+                border: "none",
+                color: "white",
+                cursor: "pointer",
+                borderRadius: "6px",
+                fontWeight: "bold"
               }}
             >
-              <span style={{ fontSize: "16px" }}>
-                {p.name} - ${p.price}
-              </span>
+              Add
+            </button>
+          </form>
+        </div>
 
-              <button
-                onClick={() => deleteProduct(p.id)}
+        {/* Product list */}
+        <div
+          style={{
+            background: "#262626",
+            padding: "25px",
+            width: "100%",
+            maxWidth: "500px",
+            borderRadius: "10px",
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)"
+          }}
+        >
+          <h2 style={{ marginBottom: "20px", fontSize: "22px" }}>Products</h2>
+
+          {products.length === 0 && (
+            <p style={{ opacity: 0.7 }}>No products found.</p>
+          )}
+
+          <ul style={{ paddingLeft: 0 }}>
+            {products.map((p) => (
+              <li
+                key={p.id}
                 style={{
-                  padding: "6px 12px",
-                  background: "#E53935",
-                  color: "white",
-                  border: "none",
+                  listStyle: "none",
+                  background: "#333",
+                  padding: "12px",
+                  marginBottom: "10px",
                   borderRadius: "6px",
-                  cursor: "pointer",
-                  fontSize: "14px"
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center"
                 }}
               >
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
+                <span style={{ fontSize: "16px" }}>
+                  {p.name} - ${p.price}
+                </span>
+
+                <button
+                  onClick={() => deleteProduct(p.id)}
+                  style={{
+                    padding: "6px 12px",
+                    background: "#E53935",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    fontSize: "14px"
+                  }}
+                >
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
