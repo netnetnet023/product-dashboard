@@ -25,7 +25,7 @@ function App() {
     await fetch(`${API}/products`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, price: Number(price) })
+      body: JSON.stringify({ name, price: Number(price) }),
     });
 
     setName("");
@@ -48,15 +48,22 @@ function App() {
         display: "flex",
         justifyContent: "center",
         paddingTop: "40px",
-        fontFamily: "Inter, sans-serif"
+        fontFamily: "Inter, sans-serif",
       }}
     >
       <div style={{ width: "100%", maxWidth: "700px" }}>
-        <h1 style={{ fontSize: "42px", marginBottom: "40px", textAlign: "center" }}>
+        {/* Heading */}
+        <h1
+          style={{
+            fontSize: "42px",
+            marginBottom: "40px",
+            textAlign: "center",
+          }}
+        >
           Products Dashboard
         </h1>
 
-        {/* Add product card */}
+        {/* Add Product Card */}
         <div
           style={{
             background: "#262626",
@@ -65,7 +72,7 @@ function App() {
             maxWidth: "500px",
             borderRadius: "10px",
             marginBottom: "40px",
-            boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)"
+            boxShadow: "0 0 10px rgba(0,0,0,0.3)",
           }}
         >
           <h2 style={{ marginBottom: "20px", fontSize: "22px" }}>Add Product</h2>
@@ -85,7 +92,7 @@ function App() {
                 border: "none",
                 outline: "none",
                 background: "#333",
-                color: "white"
+                color: "white",
               }}
             />
 
@@ -100,7 +107,7 @@ function App() {
                 border: "none",
                 outline: "none",
                 background: "#333",
-                color: "white"
+                color: "white",
               }}
             />
 
@@ -112,7 +119,7 @@ function App() {
                 color: "white",
                 cursor: "pointer",
                 borderRadius: "6px",
-                fontWeight: "bold"
+                fontWeight: "bold",
               }}
             >
               Add
@@ -120,7 +127,7 @@ function App() {
           </form>
         </div>
 
-        {/* Product list */}
+        {/* Product List */}
         <div
           style={{
             background: "#262626",
@@ -128,7 +135,7 @@ function App() {
             width: "100%",
             maxWidth: "500px",
             borderRadius: "10px",
-            boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)"
+            boxShadow: "0 0 10px rgba(0,0,0,0.3)",
           }}
         >
           <h2 style={{ marginBottom: "20px", fontSize: "22px" }}>Products</h2>
@@ -137,7 +144,7 @@ function App() {
             <p style={{ opacity: 0.7 }}>No products found.</p>
           )}
 
-          <ul style={{ paddingLeft: 0 }}>
+          <ul style={{ paddingLeft: "0" }}>
             {products.map((p) => (
               <li
                 key={p.id}
@@ -149,7 +156,7 @@ function App() {
                   borderRadius: "6px",
                   display: "flex",
                   justifyContent: "space-between",
-                  alignItems: "center"
+                  alignItems: "center",
                 }}
               >
                 <span style={{ fontSize: "16px" }}>
@@ -165,7 +172,7 @@ function App() {
                     border: "none",
                     borderRadius: "6px",
                     cursor: "pointer",
-                    fontSize: "14px"
+                    fontSize: "14px",
                   }}
                 >
                   Delete
